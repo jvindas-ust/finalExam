@@ -1,0 +1,20 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.section-pagetop {
+    background: url(../images/sofa.jpg) center bottom;
+    background-size: cover;
+}
+
+.section-pagetop .title-page {
+    color: #428dff;
+    font-size: 3rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
+}
+
+.modal-body,
+.no-padding {
+    padding: 0;
+}
