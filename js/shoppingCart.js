@@ -1,4 +1,4 @@
-function shoppingCart(elem, cart) {
+function shoppingCart(elem, cart, empty = true) {
   elem.innerHTML = '';
   let subtotal = 0;
   for (const product of cart) {
@@ -15,6 +15,7 @@ function shoppingCart(elem, cart) {
   $('#subtotal').text(subtotal);
   $('#discount').text(discount);
   $('#total').text(total);
+  $('#placeOrder').attr('data-empty', empty);
 
   return '';
 }
@@ -91,7 +92,7 @@ function minicartProduct(product, price) {
       product.image
     }" class="img-thumbnail img-xs" /></div>
     <figcaption class="media-body">
-        <a href="#">${product.name}</a> <br />
+        <a href="#" class="check-out">${product.name}</a> <br />
         <span class="text-muted">USD ${price}</span>
     </figcaption>
 </figure>

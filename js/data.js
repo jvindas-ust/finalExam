@@ -60,7 +60,7 @@ let products = [
     name: 'Pillow',
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam ',
-    rating: 76,
+    rating: 50,
     reviews: 34,
     orders: 20,
     colors: 'White, black, blue',

@@ -22,6 +22,11 @@ $(document).ready(function() {
     $('#exampleModalLong').modal('show');
   });
 
+  $(document).on('click', '.check-out', function(event) {
+    event.preventDefault();
+    $('#exampleModalLong').modal('show');
+  });
+
   $(document).on('click', '.remove', function(event) {
     event.preventDefault();
     let id = event.target.dataset.id;
@@ -41,7 +46,10 @@ $(document).ready(function() {
 
   $('#placeOrder').on('click', function(event) {
     event.preventDefault();
-    cart = [];
+
+    if (event.target.dataset.empty == 'true') {
+      cart = [];
+    }
     render();
     $('#exampleModalLong').modal('hide');
   });
@@ -56,7 +64,7 @@ $(document).ready(function() {
         quantity: 1,
       },
     ];
-    shoppingCart(cartList, tempCart);
+    shoppingCart(cartList, tempCart, false);
     $('#exampleModalLong').modal('show');
   });
 });
