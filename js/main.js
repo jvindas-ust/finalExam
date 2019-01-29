@@ -50,6 +50,7 @@ $(document).ready(function() {
     if (event.target.dataset.empty == 'true') {
       cart = [];
     }
+    minicartRender(minicart);
     render();
     $('#exampleModalLong').modal('hide');
   });
