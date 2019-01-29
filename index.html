@@ -66,25 +66,7 @@
                                         style="min-width: 250px; position: absolute; transform: translate3d(-82px, 43px, 0px); top: 0px; left: 0px; will-change: transform;"
                                         x-placement="bottom-end"
                                     >
-                                        <article class="p-2">
-                                            <figure class="media">
-                                                <div class="img-wrap"><img src="images/items/1.jpg" class="img-thumbnail img-xs" /></div>
-                                                <figcaption class="media-body">
-                                                    <a href="#">Product name</a> <br />
-                                                    <span class="text-muted">USD 260</span>
-                                                </figcaption>
-                                            </figure>
-                                            <!-- media.// -->
-                                            <hr />
-                                            <figure class="media">
-                                                <div class="img-wrap"><img src="images/items/2.jpg" class="img-thumbnail img-xs" /></div>
-                                                <figcaption class="media-body">
-                                                    <a href="#">Product name</a> <br />
-                                                    <span class="text-muted">USD 1260</span>
-                                                </figcaption>
-                                            </figure>
-                                            <!-- media.// -->
-                                        </article>
+                                        <article id="minicart" class="p-2"></article>
                                     </div>
                                     <!--  dropdown-menu .// -->
                                 </div>
@@ -361,8 +343,7 @@
                                                         <th scope="col" class="text-right" width="200">Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="cartList">
-                                                </tbody>
+                                                <tbody id="cartList"></tbody>
                                             </table>
                                         </div>
                                         <!-- card.// -->
@@ -380,7 +361,9 @@
                                         </dl>
                                         <dl class="dlist-align h4">
                                             <dt>Total:</dt>
-                                            <dd class="text-right"><strong>USD <span id="total"></span></strong></dd>
+                                            <dd class="text-right">
+                                                <strong>USD <span id="total"></span></strong>
+                                            </dd>
                                         </dl>
                                         <hr />
                                         <figure class="itemside mb-3">
@@ -403,7 +386,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> &nbsp; Place Order</button>
+                        <button type="button" class="btn btn-primary" id="placeOrder"><i class="fas fa-shopping-cart"></i> &nbsp; Place Order</button>
                     </div>
                 </div>
             </div>
@@ -424,7 +407,7 @@
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"
         ></script>
-        <script src="js/products.js"></script>
+        <script src="js/data.js"></script>
         <script src="js/productListing.js"></script>
         <script src="js/shoppingCart.js"></script>
         <script src="js/main.js"></script>

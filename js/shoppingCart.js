@@ -1,4 +1,5 @@
 function shoppingCart(elem, cart) {
+  elem.innerHTML = '';
   let subtotal = 0;
   for (const product of cart) {
     let tr = document.createElement('tr');
@@ -40,7 +41,7 @@ function cartProduct(cartItem, price) {
         </figure>
     </td>
     <td>
-        <select class="form-control">
+        <select class="form-control changeQuantity" data-id=${product.id}>
             <option ${cartItem.quantity == 1 ? 'selected' : ''}>1</option>
             <option ${cartItem.quantity == 2 ? 'selected' : ''}>2</option>
             <option ${cartItem.quantity == 3 ? 'selected' : ''}>3</option>
@@ -63,6 +64,37 @@ function cartProduct(cartItem, price) {
         >
             <i class="fa fa-heart"></i
         ></a>
-        <a href="" class="btn btn-outline-danger"> × Remove</a>
+        <a href="" class="btn btn-outline-danger remove" data-id=${
+          product.id
+        }> × Remove</a>
     </td>`;
+}
+
+function minicartRender(elem) {
+  elem.innerHTML = '';
+  if (cart.length > 0) {
+    for (const product of cart) {
+      let figure = document.createElement('figure');
+      figure.classList.add('media');
+      let price = product.info.price * product.quantity;
+      figure.innerHTML = minicartProduct(product.info, price);
+      elem.append(figure);
+    }
+  } else {
+    elem.innerHTML = '<p>No items in cart.</p>';
+  }
+}
+
+function minicartProduct(product, price) {
+  return `<figure class="media">
+    <div class="img-wrap"><img src="${
+      product.image
+    }" class="img-thumbnail img-xs" /></div>
+    <figcaption class="media-body">
+        <a href="#">${product.name}</a> <br />
+        <span class="text-muted">USD ${price}</span>
+    </figcaption>
+</figure>
+<!-- media.// -->
+<hr />`;
 }

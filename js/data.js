@@ -70,3 +70,5 @@ let products = [
     price: 40,
   },
 ];
+
+let cart = [];

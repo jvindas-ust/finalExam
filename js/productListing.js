@@ -49,29 +49,53 @@ function productListing(product) {
                     <!-- info-price-detail // -->
                     <p class="text-success">Free shipping</p>
                     <br />
-                    <dl class="dlist-inline">
-			  <dt>Quantity: </dt>
-			  <dd> 
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> 1 </option>
-			  		<option> 2 </option>
-                    <option> 3 </option>
-                    <option> 3 </option>
-			  	</select>
-			  </dd>
-			</dl>
-                    <p><a href="#" class="btn btn-primary"> Buy </a>
-                    <a href="#" class="btn  btn-outline-primary add-to-cart" data-id=${
-                      product.id
-                    }> <i class="fas fa-shopping-cart"></i> Add to cart </a>
-                    </p>
-                    <a href="#"><i class="fa fa-heart"></i> Add to wishlist</a>
-                </div>
-                <!-- action-wrap.// -->
+                    ${renderBuyAction(product)}
             </aside>
             <!-- col.// -->
         </div>
         <!-- row.// -->
     </div>
     <!-- card-body .// -->`;
+}
+
+function renderBuyAction(product) {
+  let incart = cart.find((p) => product.id == p.id);
+  if (typeof incart == 'undefined') {
+    return `<dl class="dlist-inline">
+        <dt>Quantity: </dt>
+        <dd> 
+            <select id="quantityProductList-${
+              product.id
+            }" class="form-control form-control-sm" style="width:70px;">
+                <option> 1 </option>
+                <option> 2 </option>
+            <option> 3 </option>
+            <option> 4 </option>
+            </select>
+        </dd>
+    </dl>
+    <p><a href="#" class="btn btn-primary buy" data-id=${product.id}> Buy </a>
+            <a href="#" class="btn  btn-outline-primary add-to-cart" data-id=${
+              product.id
+            }> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+            </p>
+            <a href="#"><i class="fa fa-heart"></i> Add to wishlist</a>
+        </div>
+        <!-- action-wrap.// -->`;
+  } else {
+    return `
+            <h4><span class="badge badge-light">${
+              incart.quantity
+            } in cart</span></h4>
+            <p><a href="#" class="btn btn-outline-primary buy" data-id=${
+              product.id
+            }> Buy </a>
+            <a href="#" class="btn  btn-primary view-cart" data-id=${
+              product.id
+            }> <i class="fas fa-shopping-cart"></i> Check Out </a>
+            </p>
+            <a href="#"><i class="fa fa-heart"></i> Add to wishlist</a>
+        </div>
+        <!-- action-wrap.// -->`;
+  }
 }
