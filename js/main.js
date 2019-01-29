@@ -24,6 +24,7 @@ $(document).ready(function() {
 
   $(document).on('click', '.check-out', function(event) {
     event.preventDefault();
+    shoppingCart(cartList, cart);
     $('#exampleModalLong').modal('show');
   });
 
