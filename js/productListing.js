@@ -61,7 +61,9 @@ function productListing(product) {
 			  </dd>
 			</dl>
                     <p><a href="#" class="btn btn-primary"> Buy </a>
-                    <a href="#" class="btn  btn-outline-primary"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                    <a href="#" class="btn  btn-outline-primary add-to-cart" data-id=${
+                      product.id
+                    }> <i class="fas fa-shopping-cart"></i> Add to cart </a>
                     </p>
                     <a href="#"><i class="fa fa-heart"></i> Add to wishlist</a>
                 </div>

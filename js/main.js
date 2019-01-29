@@ -7,6 +7,14 @@ $(document).ready(function() {
     productList.append(article);
   }
 
+  $(document).on('click', '.add-to-cart', function(event) {
+    event.preventDefault();
+    let id = event.target.dataset.id;
+    let product = products.find((product) => product.id == id);
+
+    console.log(product);
+  });
+
   let cartList = document.getElementById('cartList');
   let cart = [
     { id: 1, info: products[0], quantity: 1 },
