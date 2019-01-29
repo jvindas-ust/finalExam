@@ -74,6 +74,9 @@ function cartProduct(cartItem, price) {
 function minicartRender(elem) {
   elem.innerHTML = '';
   if (cart.length > 0) {
+    $('#cartNoti')
+      .text(cart.length)
+      .show();
     for (const product of cart) {
       let figure = document.createElement('figure');
       figure.classList.add('media');
@@ -82,6 +85,9 @@ function minicartRender(elem) {
       elem.append(figure);
     }
   } else {
+    $('#cartNoti')
+      .text(0)
+      .hide();
     elem.innerHTML = '<p>No items in cart.</p>';
   }
 }
