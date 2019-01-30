@@ -59,7 +59,7 @@ function productListing(product) {
 }
 
 function renderBuyAction(product) {
-  let incart = cart.find((p) => product.id == p.id);
+  let incart = getCart().find((p) => product.id == p.id);
   if (typeof incart == 'undefined') {
     return `<dl class="dlist-inline">
         <dt>Quantity: </dt>

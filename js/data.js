@@ -71,4 +71,14 @@ let products = [
   },
 ];
 
-let cart = [];
+function getCart() {
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  if (cart == null) {
+    return [];
+  }
+  return cart;
+}
+
+function setCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}

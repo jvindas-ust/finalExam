@@ -11,33 +11,38 @@ $(document).ready(function() {
       info: products.find((product) => product.id == id),
       quantity: parseInt($(`#quantityProductList-${id}`)[0].value),
     };
+    let cart = getCart();
     cart.push(product);
+    setCart(cart);
     minicartRender(minicart);
     render();
   });
 
   $(document).on('click', '.view-cart', function(event) {
     event.preventDefault();
-    shoppingCart(cartList, cart);
+    shoppingCart(cartList, getCart());
     $('#exampleModalLong').modal('show');
   });
 
   $(document).on('click', '.check-out', function(event) {
     event.preventDefault();
-    shoppingCart(cartList, cart);
+    shoppingCart(cartList, getCart());
     $('#exampleModalLong').modal('show');
   });
 
   $(document).on('click', '.remove', function(event) {
     event.preventDefault();
     let id = event.target.dataset.id;
+    let cart = getCart();
     cart = cart.filter((c) => c.id !== id);
+    setCart(cart);
     shoppingCart(cartList, cart);
     minicartRender(minicart);
     render();
   });
 
   $(document).on('change', '.changeQuantity', function(event) {
+    let cart = getCart();
     let index = cart.findIndex(
       (product) => product.id == event.target.dataset.id
     );
@@ -49,7 +54,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     if (event.target.dataset.empty == 'true') {
-      cart = [];
+      setCart([]);
     }
     minicartRender(minicart);
     render();

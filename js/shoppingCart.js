@@ -4,7 +4,7 @@ function shoppingCart(elem, cart, empty = true) {
   for (const product of cart) {
     let tr = document.createElement('tr');
     let price = product.info.price * product.quantity;
-    tr.innerHTML = cartProduct(product, price);
+    tr.innerHTML = cartProduct(product, price, empty);
     elem.append(tr);
     subtotal += price;
   }
@@ -20,7 +20,7 @@ function shoppingCart(elem, cart, empty = true) {
   return '';
 }
 
-function cartProduct(cartItem, price) {
+function cartProduct(cartItem, price, empty) {
   let product = cartItem.info;
   return `
     <td>
@@ -64,14 +64,19 @@ function cartProduct(cartItem, price) {
             data-toggle="tooltip"
         >
             <i class="fa fa-heart"></i
-        ></a>
-        <a href="" class="btn btn-outline-danger remove" data-id=${
-          product.id
-        }> × Remove</a>
+        ></a>${
+          empty
+            ? `<a href="" class="btn btn-outline-danger remove" data-id=${
+                product.id
+              }> × Remove</a>`
+            : ''
+        }
+        
     </td>`;
 }
 
 function minicartRender(elem) {
+  let cart = getCart();
   elem.innerHTML = '';
   if (cart.length > 0) {
     $('#cartNoti')
